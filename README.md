@@ -1,7 +1,7 @@
 # ProgettoProgrammazioneReti
 Progetto del corso di Programmazione di Reti - Traccia 1 - Progetto IoT: 
 Viene gestito uno scenario di Smart Meter IoT che rilevano la temperatura e umidità del
-terreno in cui sono posizionati. I 4 dispositivi sono indicati come DEVICE.
+terreno in cui sono posizionati. I 4 dispositivi sono indicati come Device.
 Questi dispositivi si collegano 1 volta al giorno con una connessione UDP verso il Gateway.
 Tramite questa connessione i dispositivi inviano le misure che hanno raccolto durante le 24 ore
 precedenti. Le misure consistono nel rilevare l’ora della misura e il dato di
