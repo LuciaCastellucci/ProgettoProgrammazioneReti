@@ -9,7 +9,7 @@ temperatura e umidità.
 Una volta che i pacchetti di tutti i dispositivi sono arrivati al Gateway, il gateway instaura una
 connessione TCP verso un server centrale dove i valori vengono visualizzati sulla console del
 server nel seguente modo:
-Ip_address_device_1 – ora misura – valore temperatura – valore umidità
+Ip_address_device_1 – ora misura – valore temperatura – valore umidità.
 I 4 Dispositivi IoT hanno un indirizzamento appartenente ad una rete di Classe C del tipo
 192.168.1.0/24.
 Il Gateway ha due interfacce di rete: quella verso i dispositivi il cui IP Address appartiene alla
