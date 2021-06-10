@@ -28,7 +28,6 @@ def connectionToServerUDP (message, server_address, buffer_size):
         print('... Waiting to receive the response frome the Gateway...')
         # Receiving the response from server
         data, server = socket.recvfrom(buffer_size)
-        print(server)
         # Taking note about the current time for calculate the total_time
         time_n = time.time()
         # Calculating total time
@@ -42,7 +41,7 @@ def connectionToServerUDP (message, server_address, buffer_size):
         print(info)
     
     finally:
-        print("Closing Socket")
+        print("\nClosing connection\n")
         socket.close()
         
     
@@ -57,6 +56,7 @@ def readingSurveys (file_name, client_IP):
     print("Reading the detections from file...")
     # Waiting for the reading
     time.sleep(1)
+    message = ""
     
     while True:
         # Reading line 
@@ -68,7 +68,7 @@ def readingSurveys (file_name, client_IP):
         # If line is not empty
         else:
             # Let's format the message
-            message =  client_IP + " " + line + "\n"
+            message =  message + client_IP + " " + line + "\n"
     
     # Closing the file
     file.close();

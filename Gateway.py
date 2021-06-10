@@ -19,17 +19,16 @@ def connectionToClientUDP (message, server_address, buffer_size):
     # UDP Server Pocket
     # Creating the object SOCKET
     socket_devices = sk.socket(sk.AF_INET, sk.SOCK_DGRAM)
-    print ('\n\r Starting up on %s port %s' % server_address)
+    print ('\nStarting up on %s port %s' % server_address)
     # Associating the socket with the server_address
     socket_devices.bind(server_address)
     
     for i in range(4):
         # Waiting for receiving message
-        print('\n\r Waiting to receive message...')
+        print('\nWaiting to receive message...')
         data, address = socket_devices.recvfrom(4096)
-        print(address)
         # Surveys received
-        print('Received %s bytes from %s' % (len(data), address))
+        print('Received %s bytes from a Device' % (len(data)))
         message = message + data.decode('utf-8') + "\n"
         # Printing surveys
         print(message)
@@ -37,7 +36,7 @@ def connectionToClientUDP (message, server_address, buffer_size):
         time.sleep(2)
         # Reply with OK message to Device
         sent = socket_devices.sendto("Surveys arrived".encode(), address)
-        print ('Sent %s bytes back to %s' % (sent, address))
+        print ('Sent %s bytes back to Device' % (sent))
         
     socket_devices.close()
     return message
@@ -71,15 +70,13 @@ def connectionToServerTCP (message, server_address, buffer_size):
     # Waiting for a response from the cloud
     print("Waiting the server's response...")
     response = socket_cloud.recv(buffer_size)
-    # Printing the response
-    print (response)
     # Taking note about the current time for calculate the total_time
     time_n = time.time()
     # Calculating the total time for sending surveys from gateway to cloud
-    total_time = time_zero - time_n
+    total_time = time_n - time_zero
     print("Received Message: {}" .format(response.decode("utf8")))
     print("TCP message's sending time {} and the size of used buffer is {}" .format(total_time, buffer_size))
-    print("Closing connection")
+    print("\nClosing connection\n")
     socket_cloud.close()    
 
 # Information about the gateway in each interfaces

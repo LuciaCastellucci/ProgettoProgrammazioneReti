@@ -19,37 +19,36 @@ def connectionToClientTCP():
     # Define the backlog queue
     serverSocket.listen(1)
     # Now the socket is enable to receive connections
-    print ('Cloud Server is waiting for connections...')
     
     # Starting loop
-    while True:
+    #while True:
         
-        # The socket is enabled to reiceve connections
-        print ('Cloud server is ready to serve...')
-        # As soon as the connection is up, it returns a tuple
-        connectionGateway, addr = serverSocket.accept()
-        print('The Gateway is connected')
-        # Printing the tuple returned
-        print(connectionGateway,addr)
+    # The socket is enabled to reiceve connections
+    print ('Cloud server is ready to serve...')
+    # As soon as the connection is up, it returns a tuple
+    connectionGateway, addr = serverSocket.accept()
+    print('The Gateway is connected!')
 
     try:
         # Receiving surveys from socket
-        print('... And it is uploading the surveys')
+        print('... And it is uploading the surveys ...')
         message = connectionGateway.recv(buffer_size)
         # Printing surveys
         print(message.decode("utf8"))
         # Reply with OK message to Gateway
+        print("Surveys received!")
         connectionGateway.send("Surveys received".encode())
-        connectionGateway.send("\r\n".encode())
         # Closing connections with Gateway
+        print("\nClosing connection\n")
         connectionGateway.close()
-            
-    
+                
+        
     except IOError:
         # Sending error message for file not found
-        connectionGateway.send(bytes("HTTP/1.1 404 Not Found\r\n\r\n","UTF-8"))
-        connectionGateway.send(bytes("<html><head></head><body><h1>404 Not Found</h1></body></html>\r\n","UTF-8"))
+        connectionGateway.send(bytes("An error is occurred","UTF-8"))
+        print("\nClosing connection closed\n")
         connectionGateway.close()
+        
 
 # TCP port
 server_address = ('localhost',8001)
