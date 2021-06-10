@@ -23,8 +23,7 @@ def connectionToClientUDP (message, server_address, buffer_size):
     # Associating the socket with the server_address
     socket_devices.bind(server_address)
     
-    #for i in range(4):
-    while True:
+    for i in range(4):
         # Waiting for receiving message
         print('\n\r Waiting to receive message...')
         data, address = socket_devices.recvfrom(4096)
@@ -66,7 +65,7 @@ def connectionToServerTCP (message, server_address, buffer_size):
         sys.exit(0)
     
     # Sending surveys to cloud
-    socket_cloud.send(message.encode()) #se tutto è andato bene, rispondiamo al servere con un 200 OK
+    socket_cloud.send(message.encode()) 
     # Print message
     print(message.encode())   
     # Waiting for a response from the cloud
@@ -89,6 +88,6 @@ buffer_size = 4096
 message = ""
 # Moving surveys from devices to gateway
 message = connectionToClientUDP(message, server_gateway_address, buffer_size)
-server_cloud_address = ('localhost', 8008)
+server_cloud_address = ('localhost', 8001)
 # Moving surveys from gateway to cloud
 connectionToServerTCP(message, server_cloud_address, buffer_size)

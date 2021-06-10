@@ -52,8 +52,8 @@ def connectionToClientTCP():
         connectionGateway.close()
 
 # TCP port
-server_address = ('localhost',8008)
-print ('the web server is up on port:',8008)
+server_address = ('localhost',8001)
+print ('the web server is up on port:',8001)
 # TCP IP address
 server_IP = '10.10.10.2'
 # Define buffer size on the trasmission channel
