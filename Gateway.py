@@ -37,7 +37,8 @@ def connectionToClientUDP (message, server_address, buffer_size):
         # Reply with OK message to Device
         sent = socket_devices.sendto("Surveys arrived".encode(), address)
         print ('Sent %s bytes back to Device' % (sent))
-        
+      
+    print ('\nClosing socket\n')
     socket_devices.close()
     return message
 
@@ -51,7 +52,8 @@ def connectionToServerTCP (message, server_address, buffer_size):
     # Connecting to Cloud
     try:
         socket_cloud.connect(server_address)
-        print("Sending surveys to Cloud... ")
+        print("Connecting with Cloud... ")
+        print("... Sending surveys to Cloud... ")
         #Waiting 2 second for sending the request
         time.sleep(2)
         #Taking note about the current time for calculate the total_time

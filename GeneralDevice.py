@@ -24,7 +24,7 @@ def connectionToServerUDP (message, server_address, buffer_size):
         # Taking note about the current time for calculate the total_time
         time_zero = time.time()
         # Sending the request
-        sent = socket.sendto(message.encode(), server_address)
+        socket.sendto(message.encode(), server_address)
         print('... Waiting to receive the response frome the Gateway...')
         # Receiving the response from server
         data, server = socket.recvfrom(buffer_size)
@@ -41,7 +41,7 @@ def connectionToServerUDP (message, server_address, buffer_size):
         print(info)
     
     finally:
-        print("\nClosing connection\n")
+        print("\nClosing socket\n")
         socket.close()
         
     

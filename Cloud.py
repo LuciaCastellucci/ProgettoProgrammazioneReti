@@ -8,7 +8,7 @@ Cloud_Server
 """
 import socket as sk
 
-def connectionToClientTCP():
+def connectionToClientTCP(server_address, buffer_size):
     
     # TCP Server Pocket
     # Creating the object SOCKET
@@ -18,10 +18,6 @@ def connectionToClientTCP():
 
     # Define the backlog queue
     serverSocket.listen(1)
-    # Now the socket is enable to receive connections
-    
-    # Starting loop
-    #while True:
         
     # The socket is enabled to reiceve connections
     print ('Cloud server is ready to serve...')
@@ -57,4 +53,4 @@ print ('the web server is up on port:',8001)
 server_IP = '10.10.10.2'
 # Define buffer size on the trasmission channel
 buffer_size = 4096
-connectionToClientTCP()
+connectionToClientTCP(server_address,buffer_size)
